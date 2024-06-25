@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Payment Form</title>
+</head>
+<body>
+    <h2>Payment Details</h2>
+    <form action="{% url 'razorpay_payment_callback' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="order_id" value="{{ order_id }}">
+        <input type="hidden" name="amount" value="{{ amount }}">
+        <input type="hidden" name="currency" value="{{ currency }}">
+        <input type="hidden" name="razorpay_key_id" value="{{ razorpay_key_id }}">
+        <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order_id }}">
+        <input type="hidden" name="razorpay_signature" value="{{ razorpay_signature }}">
+        <button type="submit">Pay with Razorpay</button>
+    </form>
+</body>
+</html>
